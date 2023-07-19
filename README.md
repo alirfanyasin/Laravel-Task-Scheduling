@@ -8,8 +8,8 @@ Membuat file command untuk menjalakan perintah yang akan di jalankan nanti ketik
 php artisan make:command AddUser
 ```
 
-Maka file tersebut ada di direktory `app/Console/Commands/AddUser.php`
-Didalam file `AddUser.php` membuat sebauah perintah yang akan di jalankan dalam waktu tertentu, contohnya disini menambahkan sebuah data user ke dalam database.
+Maka file tersebut ada di direktory `app/Console/Commands/AddUser.php`. 
+Didalam file `AddUser.php` membuat sebuah perintah yang akan di jalankan dalam waktu tertentu, contohnya disini menambahkan sebuah data user ke dalam database.
 
 ```php
 public function handle(){
@@ -25,5 +25,18 @@ public function handle(){
     $this->info('success');
 }
 ```
+
+Lalu buka file `Kernel.php` dan buat pengaturan waktu kapan perintah itu akan di jalankan.
+
+```php
+protected function schedule(Schedule $schedule): void
+{
+    $schedule->command('add:user')->everyMinute();
+}
+```
+
+`command('add:user')` harus di samakan dengan perintah yang ada di file `AddUser.php` di dalam method `protected $signature = 'add:user';`
+
+
 
 
