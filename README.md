@@ -35,7 +35,14 @@ protected function schedule(Schedule $schedule): void
 }
 ```
 
-`command('add:user')` harus di samakan dengan perintah yang ada di file `AddUser.php` di dalam method `protected $signature = 'add:user';`
+`command('add:user')` harus di samakan dengan perintah yang ada di file `AddUser.php` di dalam method `protected $signature = 'add:user';`.
+
+</br>
+
+Jalankan schedule yang telah dibuat dengan menulis perintah ini di terminal.
+```sh
+php artisan schedule:work
+```
 
 
 
